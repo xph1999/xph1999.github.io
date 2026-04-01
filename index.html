@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价值回归策略 - 持续更新的投资记录</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, #1a365d, #2c5282); color: white; padding: 40px 20px; text-align: center; margin-bottom: 30px; }
+        header h1 { font-size: 2em; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 1.1em; }
+        .card { background: white; border-radius: 8px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-item { text-align: center; padding: 15px; background: #f7fafc; border-radius: 6px; }
+        .stat-value { font-size: 1.8em; font-weight: bold; color: #1a365d; }
+        .stat-label { color: #718096; font-size: 0.9em; margin-top: 5px; }
+        .positive { color: #38a169; }
+        .section-title { font-size: 1.3em; color: #1a365d; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .update-log { list-style: none; }
+        .update-log li { padding: 10px 0; border-bottom: 1px solid #e2e8f0; }
+        .update-log li:last-child { border-bottom: none; }
+        .date { color: #718096; font-size: 0.9em; }
+        footer { text-align: center; padding: 30px; color: #718096; font-size: 0.9em; }
+        .status-badge { display: inline-block; background: #48bb78; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>价值回归策略</h1>
+        <p>持续更新的投资策略记录</p>
+        <span class="status-badge">🟢 正常运行中</span>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2 class="section-title">📊 核心数据</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="days">171</div>
+                    <div class="stat-label">运行天数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value positive" id="strategy-return">+15.60%</div>
+                    <div class="stat-label">策略收益</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="hs300-return">+12.18%</div>
+                    <div class="stat-label">沪深 300</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value positive" id="excess-return">+3.42%</div>
+                    <div class="stat-label">超额收益</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #718096; margin-top: 15px;">最后更新：2026-04-01 15:00</p>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">📈 关于策略</h2>
+            <p><strong>策略理念：</strong>价值回归，长期主义</p>
+            <p><strong>基准指数：</strong>沪深 300</p>
+            <p><strong>运行起始：</strong>2025-07-17</p>
+            <p><strong>更新频率：</strong>每个交易日 15:00 自动更新</p>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">📝 最近更新</h2>
+            <ul class="update-log">
+                <li>
+                    <strong>2026-04-01 策略日报</strong>
+                    <p class="date">策略收益 +15.60%，超额收益 +3.42%</p>
+                </li>
+                <li>
+                    <strong>2026-03-31 策略日报</strong>
+                    <p class="date">策略收益 +14.04%，超额收益 +2.70%</p>
+                </li>
+                <li>
+                    <strong>2026-03-30 策略日报</strong>
+                    <p class="date">策略收益 +13.85%，超额收益 +2.55%</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">👤 关于我</h2>
+            <p><strong>昵称：</strong>鹏辉</p>
+            <p><strong>职业：</strong>金融工作者</p>
+            <p><strong>坐标：</strong>中国</p>
+            <p><strong>投资理念：</strong>价值投资，长期主义，在能力圈内下重注</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 价值回归策略 | 数据持续更新中</p>
+        <p style="margin-top: 10px;">本网站由 GitHub Pages 托管</p>
+    </footer>
+
+    <script>
+        // 自动计算运行天数
+        const startDate = new Date('2025-07-17');
+        const today = new Date();
+        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('days').textContent = days;
+    </script>
+</body>
+</html>
