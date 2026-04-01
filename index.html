@@ -6,57 +6,141 @@
     <title>价值回归策略 - 持续更新的投资记录</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #1a365d, #2c5282); color: white; padding: 40px 20px; text-align: center; margin-bottom: 30px; }
+        body { font-family: Microsoft YaHei, Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #1a365d, #2c5282); color: white; padding: 40px 20px; text-align: center; margin-bottom: 30px; border-radius: 8px; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header p { opacity: 0.9; font-size: 1.1em; }
-        .card { background: white; border-radius: 8px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
-        .stat-item { text-align: center; padding: 15px; background: #f7fafc; border-radius: 6px; }
-        .stat-value { font-size: 1.8em; font-weight: bold; color: #1a365d; }
-        .stat-label { color: #718096; font-size: 0.9em; margin-top: 5px; }
-        .positive { color: #38a169; }
-        .section-title { font-size: 1.3em; color: #1a365d; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
-        .update-log { list-style: none; }
-        .update-log li { padding: 10px 0; border-bottom: 1px solid #e2e8f0; }
-        .update-log li:last-child { border-bottom: none; }
-        .date { color: #718096; font-size: 0.9em; }
-        footer { text-align: center; padding: 30px; color: #718096; font-size: 0.9em; }
         .status-badge { display: inline-block; background: #48bb78; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; margin-top: 10px; }
+        
+        /* Cards */
+        .card { background: white; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .section-title { font-size: 16px; color: #1f2937; margin-bottom: 16px; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; }
+        
+        /* Big Stats */
+        .big-stats { display: flex; justify-content: space-around; margin: 24px 0; padding: 32px 0; background: #fafafa; border-radius: 8px; }
+        .big-stat-item { text-align: center; flex: 1; }
+        .big-stat-value { font-size: 42px; font-weight: bold; color: #dc2626; margin-bottom: 8px; }
+        .big-stat-label { font-size: 15px; color: #6b7280; }
+        
+        /* Tables */
+        .table-container { margin: 24px 0; padding: 16px; background: #f9fafb; border-radius: 4px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
+        th { background-color: #93c5fd; border: 1px solid #60a5fa; padding: 10px; text-align: center; font-weight: 600; }
+        td { border: 1px solid #bfdbfe; padding: 10px; text-align: center; }
+        tr:nth-child(even) td { background: #eff6ff; }
+        
+        /* Charts */
+        .chart-container { margin: 24px 0; }
+        
+        /* Footer */
+        footer { text-align: center; padding: 30px; color: #718096; font-size: 0.9em; border-top: 1px solid #e8e8e8; margin-top: 30px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .big-stats { flex-direction: column; gap: 20px; }
+            .container { padding: 10px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>价值回归策略</h1>
-        <p>持续更新的投资策略记录</p>
-        <span class="status-badge">🟢 正常运行中</span>
-    </header>
-
     <div class="container">
+        <header>
+            <h1>📊 价值回归策略</h1>
+            <p>持续更新的投资策略记录</p>
+            <span class="status-badge">🟢 正常运行中</span>
+        </header>
+
+        <!-- 核心数据 -->
         <div class="card">
-            <h2 class="section-title">📊 核心数据</h2>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="days">171</div>
-                    <div class="stat-label">运行天数</div>
+            <h2 class="section-title">📊 策略与沪深 300 成立至今收益率</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 20px;">数据区间：2025.07.17 至 2026.04.01 &nbsp;|&nbsp; 交易日数：171</p>
+            
+            <div class="big-stats">
+                <div class="big-stat-item">
+                    <div class="big-stat-value">+15.6%</div>
+                    <div class="big-stat-label">价值回归策略</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value positive" id="strategy-return">+15.60%</div>
-                    <div class="stat-label">策略收益</div>
+                <div class="big-stat-item">
+                    <div class="big-stat-value">+12.2%</div>
+                    <div class="big-stat-label">沪深 300</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="hs300-return">+12.18%</div>
-                    <div class="stat-label">沪深 300</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value positive" id="excess-return">+3.42%</div>
-                    <div class="stat-label">超额收益</div>
+                <div class="big-stat-item">
+                    <div class="big-stat-value">+3.4%</div>
+                    <div class="big-stat-label">超额收益</div>
                 </div>
             </div>
-            <p style="text-align: center; color: #718096; margin-top: 15px;">最后更新：2026-04-01 15:00</p>
         </div>
 
+        <!-- 收益汇总 -->
+        <div class="card">
+            <h2 class="section-title">📊 收益汇总</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>2026/04/01</th>
+                            <th>成立至今涨跌幅</th>
+                            <th>2026 年收益</th>
+                            <th>当月涨跌幅</th>
+                            <th>今日涨跌幅</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>价值回归策略</strong><br><span style="font-size: 12px; color: #6b7280;">(成立于 2025.7.18)</span></td>
+                            <td>+15.60%</td>
+                            <td>+1.63%</td>
+                            <td>+1.72%</td>
+                            <td>+1.72%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>沪深 300 指数</strong></td>
+                            <td>+12.18%</td>
+                            <td>-2.24%</td>
+                            <td>+1.71%</td>
+                            <td>+1.71%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 指标对比 -->
+        <div class="card">
+            <h2 class="section-title">📈 策略与沪深 300 指标对比表</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>策略</th>
+                            <th>沪深 300</th>
+                            <th>差异</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>总收益率</strong></td><td>+15.6043%</td><td>+12.1844%</td><td>+3.4198%</td></tr>
+                        <tr><td><strong>年化收益率</strong></td><td>+23.8236%</td><td>+18.4636%</td><td>+5.3600%</td></tr>
+                        <tr><td><strong>年化波动率</strong></td><td>21.9038%</td><td>15.3030%</td><td>6.6009%</td></tr>
+                        <tr><td><strong>夏普比率</strong></td><td>0.9507</td><td>1.0105</td><td>-0.0598</td></tr>
+                        <tr><td><strong>Calmar 比率</strong></td><td>1.9283</td><td>2.3734</td><td>-0.4450</td></tr>
+                        <tr><td><strong>胜率</strong></td><td>48.52%</td><td>56.21%</td><td>-7.69%</td></tr>
+                        <tr><td><strong>盈亏比</strong></td><td>1.29</td><td>0.96</td><td>+0.34</td></tr>
+                        <tr><td><strong>最大单日收益</strong></td><td>+5.7037%</td><td>+2.3096%</td><td>+3.3941%</td></tr>
+                        <tr><td><strong>最大单日亏损</strong></td><td>-3.5308%</td><td>-3.2630%</td><td>-0.2678%</td></tr>
+                        <tr><td><strong>最大回撤</strong></td><td>-12.3544%</td><td>-7.7795%</td><td>-4.5750%</td></tr>
+                        <tr><td><strong>最大回撤期间</strong></td><td>2026-02-27 至 2026-03-23 (24 天)</td><td>2026-01-06 至 2026-03-23 (76 天)</td><td>-52 天</td></tr>
+                        <tr><td><strong>最大区间收益</strong></td><td>+31.9986%</td><td>+18.7434%</td><td>+13.2552%</td></tr>
+                        <tr><td><strong>最大区间收益期间</strong></td><td>2025-07-31 至 2026-02-27 (211 天)</td><td>2025-07-17 至 2026-01-06 (173 天)</td><td>+38 天</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 关于策略 -->
         <div class="card">
             <h2 class="section-title">📈 关于策略</h2>
             <p><strong>策略理念：</strong>价值回归，长期主义</p>
@@ -65,24 +149,7 @@
             <p><strong>更新频率：</strong>每个交易日 15:00 自动更新</p>
         </div>
 
-        <div class="card">
-            <h2 class="section-title">📝 最近更新</h2>
-            <ul class="update-log">
-                <li>
-                    <strong>2026-04-01 策略日报</strong>
-                    <p class="date">策略收益 +15.60%，超额收益 +3.42%</p>
-                </li>
-                <li>
-                    <strong>2026-03-31 策略日报</strong>
-                    <p class="date">策略收益 +14.04%，超额收益 +2.70%</p>
-                </li>
-                <li>
-                    <strong>2026-03-30 策略日报</strong>
-                    <p class="date">策略收益 +13.85%，超额收益 +2.55%</p>
-                </li>
-            </ul>
-        </div>
-
+        <!-- 关于我 -->
         <div class="card">
             <h2 class="section-title">👤 关于我</h2>
             <p><strong>昵称：</strong>鹏辉</p>
@@ -90,19 +157,11 @@
             <p><strong>坐标：</strong>中国</p>
             <p><strong>投资理念：</strong>价值投资，长期主义，在能力圈内下重注</p>
         </div>
+
+        <footer>
+            <p>© 2026 价值回归策略 | 数据持续更新中</p>
+            <p style="margin-top: 10px;">本网站由 GitHub Pages 托管</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>© 2026 价值回归策略 | 数据持续更新中</p>
-        <p style="margin-top: 10px;">本网站由 GitHub Pages 托管</p>
-    </footer>
-
-    <script>
-        // 自动计算运行天数
-        const startDate = new Date('2025-07-17');
-        const today = new Date();
-        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-        document.getElementById('days').textContent = days;
-    </script>
 </body>
 </html>
